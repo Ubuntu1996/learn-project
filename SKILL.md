@@ -103,12 +103,18 @@ as needed. Search selectively; skip generated, vendored, and peripheral files.
 
 Default pacing:
 
-- Start with steps **1-3** in a concise response, roughly 500-800 words or less.
-  Name the example and the next useful workflow to investigate.
-- On **continue**, cover **4-6**, keeping one consistent example throughout.
-- Continue with **7-9** next. Offer **10** as an interactive understanding check.
-- Let the user jump to any topic. If they request a full walkthrough, cover
-  **1-9** without intermediate approval gates; make the quiz optional.
+- Complete steps **1-10** in one autonomous walkthrough by default. Do not stop
+  after a stage group, require a "full walkthrough" request, or ask the user to
+  say "continue" before proceeding.
+- Organize the walkthrough as **1-3** (orientation), **4-6** (implementation),
+  **7-9** (design and practice), and **10** (self-check). Keep one consistent
+  example throughout.
+- Scale depth to the project's complexity and the user's goal. Keep sections
+  concise rather than deferring later stages to a follow-up.
+- Make **10** a non-interactive self-check with an answer key by default, so the
+  walkthrough can finish without another user reply. Interactive quizzing is opt-in.
+- Honor explicit requests for a shorter, focused, or step-by-step walkthrough;
+  the user can still jump to any topic.
 - Do not pause for approval of a diagram or its style. A brief drawing plan is
   enough; proceed as part of the current section once the output location is valid.
 - Prefer concise explanations with source links over large code excerpts. Read
@@ -223,13 +229,17 @@ Plan only; do not edit. Avoid broad refactors as a first learning exercise.
 
 ### 10. Understanding check: Can the user reason about it?
 
-When the user wants a check, ask five questions one at a time. Cover purpose,
-architecture, execution, and trade-offs; include a "what happens if...?" failure
-scenario and a "where would you change...?" feature scenario. Do not reveal the
-answer before the user responds. Evaluate answers against the inspected code.
+By default, finish with a non-interactive self-check: provide five questions
+covering purpose, architecture, execution, and trade-offs, including a "what happens
+if...?" failure scenario and a "where would you change...?" feature scenario.
+Put a concise, source-backed answer key after the questions so the user can try
+them before reading the answers. Do not wait for a response or invent learner
+answers; presenting a self-check does not establish mastery.
 
-Alternatively, invite an explanation back and correct what is wrong, oversimplified,
-or missing, with source references. Recognition of an AI summary is not mastery.
+Only when the user explicitly requests an interactive check, ask the questions
+one at a time and withhold each answer until the user responds. Evaluate replies
+against the inspected code. If the user prefers to explain the project back,
+correct what is wrong, oversimplified, or missing with source references.
 
 ## Diagrams: standing permission and required workflow
 
@@ -325,8 +335,10 @@ Do not silently reuse a stale architecture explanation or diagram as current evi
 
 ## Completion check
 
-Before ending a section, verify:
+Before finishing the walkthrough, verify:
 
+- The requested scope is covered: steps **1-10** by default, without stopping
+  for routine pacing approvals. Any blocked work is explicitly identified.
 - The response answers the user's actual goal at an appropriate depth.
 - Differentiation is explicit, evidence-backed, and includes trade-offs.
 - The architecture/code map and execution trace refer to inspected implementation.
@@ -341,5 +353,5 @@ Before ending a section, verify:
 /skill:learn-project "C:/src/InterestingProject"
 /skill:learn-project https://github.com/owner/project
 /skill:learn-project "C:/src/InterestingProject" Focus on plugins; I know TypeScript.
-/skill:learn-project "C:/src/InterestingProject" Full walkthrough; goal: contribute.
+/skill:learn-project "C:/src/InterestingProject" Goal: contribute.
 ```

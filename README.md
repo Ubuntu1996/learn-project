@@ -49,7 +49,7 @@ For hosts that support `/skill:` invocation:
 ```text
 /skill:learn-project "D:\src\InterestingProject"
 /skill:learn-project https://github.com/owner/project
-/skill:learn-project "D:\src\InterestingProject" Full walkthrough; goal: contribute.
+/skill:learn-project "D:\src\InterestingProject" Goal: contribute.
 ```
 
 You can specify your background, focus, language preference, or time budget.
@@ -63,11 +63,15 @@ relevant package or workflow for a deeper look.
 | 1-3: Orientation | Purpose, evidence-backed comparisons with alternatives, and a realistic usage example. |
 | 4-6: Implementation | Runtime architecture, a selective code map, and an execution trace of that same example. |
 | 7-9: Design and practice | Abstractions and invariants, build/run/test instructions, a reading order, and a small change plan. |
-| 10: Optional understanding check | Five interactive questions, asked one at a time, or feedback on your own explanation. |
+| 10: Understanding check | Five self-check questions with a separate answer key; interactive quizzing only when requested. |
 
-By default, the first response covers stages 1-3. Say `continue` to move through
-4-6, then 7-9, or jump directly to a topic. Request a **full walkthrough** to cover
-1-9 without intermediate approval gates; the understanding check remains optional.
+By default, the agent completes **all stages (1-10)** in one walkthrough without
+waiting for follow-up prompts. There are no stage-by-stage approval gates: you do
+not need to say `continue` or request a **full walkthrough**. Stage 10 includes
+questions and a separate answer key so it does not wait for your replies.
+
+You can still request a shorter or focused walkthrough, jump directly to a topic,
+or explicitly choose step-by-step pacing or an interactive understanding check.
 
 Important claims are tied to repository-relative paths and symbols, with line
 references when available. The agent distinguishes documented behavior, inspected
