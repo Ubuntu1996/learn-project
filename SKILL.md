@@ -4,6 +4,7 @@ description: >-
   Help a software engineer learn a GitHub project or unfamiliar repository through
   an evidence-based walkthrough of its purpose, alternatives and differentiation,
   usage, architecture, code structure, execution paths, and design trade-offs.
+  Default to bilingual explanations with English above the matching Chinese.
   Use for requests such as "help me learn this project", "explain this repository",
   or "walk me through this codebase". Create diagrams when they improve understanding,
   using the diagram-design skill with the approved default light / Minimal light style.
@@ -59,6 +60,34 @@ or substitute another diagram renderer.
   files that were unavailable.
 - For a large monorepo, give a brief whole-project orientation and choose one
   relevant package or workflow for depth. State that scope.
+
+## Output language and layout
+
+By default, write learning output in **English-first, Chinese-below pairs**, using
+Simplified Chinese. Honor an explicit request for a different language or layout;
+the language of the user's prompt alone does not change this default. Do not ask
+the user to confirm the bilingual format before proceeding.
+
+- Put each English heading, paragraph, or list item first, with its matching
+  Chinese translation immediately below. Use Markdown paragraph breaks or `<br>`
+  so pairs render vertically, including within list items. Do not use side-by-side
+  bilingual columns or a complete English report followed by a Chinese report.
+- Apply this throughout **all stages 1-10**, including progress updates, caveats,
+  next actions, self-check questions, the answer key, interactive feedback when
+  requested, and saved learning notes. Do not translate only the final summary.
+- Keep both versions semantically equivalent, preserving evidence qualifiers,
+  limitations, and technical detail. Neither language should be an abridged
+  summary of the other. Source references may be shared after a pair when they
+  support both versions.
+- In Markdown tables, stack English above Chinese within each prose cell and
+  header using `<br>`. Leave code-only cells unchanged; do not create separate
+  English and Chinese columns.
+- In diagrams, stack human-readable English labels above their Chinese
+  translations and pair captions likewise. Expand the layout or split a diagram
+  rather than shrinking text or violating the diagram quality requirements.
+- Preserve code, commands, API names, identifiers, paths, URLs, and literal output
+  exactly. Show shared technical content once and pair its surrounding explanation
+  instead of translating executable content or duplicating code blocks.
 
 ## Evidence and safety rules
 
@@ -340,6 +369,8 @@ Before finishing the walkthrough, verify:
 - The requested scope is covered: steps **1-10** by default, without stopping
   for routine pacing approvals. Any blocked work is explicitly identified.
 - The response answers the user's actual goal at an appropriate depth.
+- Output uses English-first, Chinese-below pairs throughout, unless explicitly
+  overridden. Both versions preserve the same meaning, evidence, and caveats.
 - Differentiation is explicit, evidence-backed, and includes trade-offs.
 - The architecture/code map and execution trace refer to inspected implementation.
 - Unknowns, unrun commands, and documentation/code discrepancies are clear.

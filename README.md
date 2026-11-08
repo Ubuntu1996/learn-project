@@ -56,6 +56,27 @@ You can specify your background, focus, language preference, or time budget.
 For a large monorepo, the agent gives a whole-project orientation and selects a
 relevant package or workflow for a deeper look.
 
+## Output format
+
+Learning reports are bilingual by default: **English on top, matching Simplified
+Chinese directly below**, paired by heading, paragraph, or list item. This applies
+to all stages, including self-check questions and the answer key, not just the
+final summary. The agent does not produce side-by-side language columns or two
+separate full reports.
+
+For example, a paired explanation looks like this:
+
+```text
+This command validates a configuration file and reports errors.
+这个命令会校验配置文件，并报告错误。
+```
+
+Tables stack translations within the same cell; diagrams stack human-readable
+labels and pair captions. Code, commands, identifiers, paths, URLs, and literal
+output stay unchanged and are shared rather than duplicated between languages.
+Explicit language or layout requests override the default; simply writing your
+prompt in English or Chinese does not.
+
 ## Learning flow
 
 | Stage | Topics |
