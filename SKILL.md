@@ -68,10 +68,11 @@ Simplified Chinese. Honor an explicit request for a different language or layout
 the language of the user's prompt alone does not change this default. Do not ask
 the user to confirm the bilingual format before proceeding.
 
-- Put each English heading, paragraph, or list item first, with its matching
-  Chinese translation immediately below. Use Markdown paragraph breaks or `<br>`
-  so pairs render vertically, including within list items. Do not use side-by-side
-  bilingual columns or a complete English report followed by a Chinese report.
+- Outside Markdown tables, put each English heading, paragraph, or list item first,
+  with its matching Chinese translation immediately below. Use Markdown paragraph
+  breaks or `<br>` so pairs render vertically, including within list items. Do
+  not use side-by-side bilingual columns or a complete English report followed
+  by a Chinese report.
 - Apply this throughout **all stages 1-10**, including progress updates, caveats,
   next actions, self-check questions, the answer key, interactive feedback when
   requested, and saved learning notes. Do not translate only the final summary.
@@ -79,9 +80,23 @@ the user to confirm the bilingual format before proceeding.
   limitations, and technical detail. Neither language should be an abridged
   summary of the other. Source references may be shared after a pair when they
   support both versions.
-- In Markdown tables, stack English above Chinese within each prose cell and
-  header using `<br>`. Leave code-only cells unchanged; do not create separate
-  English and Chinese columns.
+- **In Markdown tables, preserve table syntax instead of applying prose line
+  pairing.** Keep each header/data row on **one physical source line**. Put English
+  and Chinese in the same prose cell as `English<br>中文`; never insert literal
+  newlines or blank lines inside a row, or add separate translation rows. Do not
+  create separate English and Chinese columns.
+  Keep the delimiter row immediately after the header, with the same column
+  count as every data row. Leave delimiter cells such as `---` unchanged and
+  escape literal pipes as `\|`, including those in inline code.
+  Leave code-only cells unchanged. If the renderer does not support `<br>`, use
+  `English / 中文` within the same cell; valid table structure takes precedence
+  over vertical language stacking.
+
+  ```markdown
+  | Component<br>组件 | Responsibility<br>职责 |
+  | --- | --- |
+  | Parser<br>解析器 | Validates input.<br>校验输入。 |
+  ```
 - In diagrams, stack human-readable English labels above their Chinese
   translations and pair captions likewise. Expand the layout or split a diagram
   rather than shrinking text or violating the diagram quality requirements.
@@ -369,8 +384,11 @@ Before finishing the walkthrough, verify:
 - The requested scope is covered: steps **1-10** by default, without stopping
   for routine pacing approvals. Any blocked work is explicitly identified.
 - The response answers the user's actual goal at an appropriate depth.
-- Output uses English-first, Chinese-below pairs throughout, unless explicitly
-  overridden. Both versions preserve the same meaning, evidence, and caveats.
+- Output follows the English-first bilingual layout, including the table-specific
+  rules or any explicit override. Both versions preserve the same meaning,
+  evidence, and caveats.
+- Markdown tables keep each row on one physical source line, with valid header
+  delimiters and consistent column counts; translations stay within their cells.
 - Differentiation is explicit, evidence-backed, and includes trade-offs.
 - The architecture/code map and execution trace refer to inspected implementation.
 - Unknowns, unrun commands, and documentation/code discrepancies are clear.

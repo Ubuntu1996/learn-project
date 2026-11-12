@@ -71,11 +71,25 @@ This command validates a configuration file and reports errors.
 这个命令会校验配置文件，并报告错误。
 ```
 
-Tables stack translations within the same cell; diagrams stack human-readable
-labels and pair captions. Code, commands, identifiers, paths, URLs, and literal
-output stay unchanged and are shared rather than duplicated between languages.
-Explicit language or layout requests override the default; simply writing your
-prompt in English or Chinese does not.
+Markdown tables keep each row on **one physical source line**, with English and
+Chinese in the same cell separated by `<br>`. Never split a cell across source
+lines or add separate translation rows. Keep the header delimiter row intact,
+maintain consistent column counts, and escape literal `|` characters as `\|`.
+For example:
+
+```markdown
+| Component<br>组件 | Responsibility<br>职责 |
+| --- | --- |
+| Parser<br>解析器 | Validates input.<br>校验输入。 |
+```
+
+If the renderer does not support `<br>`, use `English / 中文` within the same cell
+instead of inserting actual newlines. Code-only cells stay unchanged.
+
+Diagrams stack human-readable labels and pair captions. Code, commands,
+identifiers, paths, URLs, and literal output stay unchanged and are shared rather
+than duplicated between languages. Explicit language or layout requests override
+the default; simply writing your prompt in English or Chinese does not.
 
 ## Learning flow
 
